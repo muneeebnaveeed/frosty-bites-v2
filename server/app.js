@@ -86,7 +86,7 @@ app.listen(port, () => {
             await mongoose.model(model).deleteMany({ _id: { $in: ids } });
 
             res.status(200).json();
-        })
+        }),
     );
 
     app.use('*', (req, res, next) => next(new AppError(`Cannot find ${req.originalUrl} on the server!`, 404)));

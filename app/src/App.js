@@ -14,17 +14,17 @@ import 'react-toastify/dist/ReactToastify.css';
 const queryClient = new QueryClient();
 
 const App = ({ width }) => {
-   const body = document.querySelector('body');
+    const body = document.querySelector('body');
 
-   if (width >= 1300) body.setAttribute('data-sidebar-style', 'full');
-   else if (width <= 1299 && width >= 767) body.setAttribute('data-sidebar-style', 'mini');
-   else body.setAttribute('data-sidebar-style', 'overlay');
+    if (width >= 1300) body.setAttribute('data-sidebar-style', 'full');
+    else if (width <= 1299 && width >= 767) body.setAttribute('data-sidebar-style', 'mini');
+    else body.setAttribute('data-sidebar-style', 'overlay');
 
-   return (
-      <QueryClientProvider client={queryClient}>
-         <Markup />
-      </QueryClientProvider>
-   );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <Markup />
+        </QueryClientProvider>
+    );
 };
 
 export default withResizeDetector(App);

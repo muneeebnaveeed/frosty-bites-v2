@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 import dayjs from 'dayjs';
 import { useSelector } from 'react-redux';
 import { currencyFormatter } from 'jsx/helpers/misc';
+import { When } from 'react-if';
 
 const _Receipt = (
    { saleId, saleType, products, subtotal, discountPercentage, absoluteDiscount, deliveryCharges, total },
@@ -12,7 +13,7 @@ const _Receipt = (
    return (
       <div
          ref={ref}
-         className="d-none d-print-block"
+         // className="d-none d-print-block"
          style={{
             width: '100%',
             minHeight: '100vh',
@@ -70,14 +71,16 @@ const _Receipt = (
                <span>Subtotal:</span>{' '}
                <span style={{ display: 'inline-block', minWidth: 200 }}>{currencyFormatter.format(subtotal)}</span>
             </h2>
-            <h2 style={{ textAlign: 'end' }}>
-               <span>Discount:</span>{' '}
-               <span style={{ display: 'inline-block', minWidth: 200 }}>
-                  {discountPercentage > 0
-                     ? `${discountPercentage}% - ${currencyFormatter.format(absoluteDiscount)}`
-                     : 'NONE'}
-               </span>
-            </h2>
+            <When condition={discountPercentage > 0}>
+               <h2 style={{ textAlign: 'end' }}>
+                  <span>Discount:</span>{' '}
+                  <span style={{ display: 'inline-block', minWidth: 200 }}>
+                     {discountPercentage > 0
+                        ? `${discountPercentage}% - ${currencyFormatter.format(absoluteDiscount)}`
+                        : 'NONE'}
+                  </span>
+               </h2>
+            </When>
             {isDelivery && (
                <h2 style={{ textAlign: 'end' }}>
                   <span>Delivery charges:</span>{' '}
@@ -92,8 +95,10 @@ const _Receipt = (
             </h2>
          </div>
          <br />
-         <div style={{ display: 'flex' }}>
-            <div
+         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <img src="/social-qr.png" style={{ height: 170 }} />
+
+            {/* <div
                style={{
                   border: '1px solid black',
                   flex: 1,
@@ -119,7 +124,7 @@ const _Receipt = (
             >
                <span>Delivery charges within 5 KM: {currencyFormatter.format(100)}</span>
                <span>Delivery charges outside 5 KM: {currencyFormatter.format(150)}</span>
-            </div>
+            </div> */}
          </div>
          <h2 style={{ textAlign: 'center', marginTop: 48 }}>POS Developed by Asaniya - www.asaniya.com</h2>
       </div>
