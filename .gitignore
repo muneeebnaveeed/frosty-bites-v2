@@ -1,5 +1,8 @@
+_legacy/
+
 app/node_modules
 app/.env
+app/build
 
 server/node_modules
 server/.development.env
