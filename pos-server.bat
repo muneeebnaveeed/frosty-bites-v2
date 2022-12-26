@@ -1,0 +1,1 @@
+pm2 start C:\POS\server\app.js --name "frosty-server"

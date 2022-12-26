@@ -1,0 +1,29 @@
+[{
+    "category": "Shakes",
+    "prodcuts": [{
+            "name": "Banana",
+            "price": "180"
+        },
+        {
+            "name": "Apple" ,
+            "price": "180"
+        }
+    ]
+},
+{
+    "category": "Fresh Juice",
+    "prodcuts": [{
+            "name": "Watermelon",
+            "price": "150"
+        },
+        {
+            "name": "Orange" ,
+            "price": "150"
+        },
+        {
+            "name": "Strawberry",
+            "price": "180"
+        }
+    ]
+}
+]

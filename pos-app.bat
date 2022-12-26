@@ -1,0 +1,1 @@
+pm2 serve C:\POS\app\ 3000 --name "frosty-app" --spa

@@ -1,0 +1,37 @@
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdownMenu {
+    padding-top: 5px;
+}
+  
+.dropdownItem {
+    text-decoration: none;
+    background-color: transparent;
+    display: block;
+    width: 100%;
+    max-width: 23.5%;
+    padding: 0.5rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    
+}
+
+.dropdownItem-active {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+
+.dropdownItem:hover, .dropdownItem:focus {
+    color: #16181b;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}

@@ -28,16 +28,16 @@ const authRoute = require('./routes/auth.route');
 const { errorController, catchAsync } = require('./controllers/errors.controller');
 const { protect } = require('./controllers/auth.controller');
 const Logger = require('./utils/logger');
+const { PORT, DB_CONNECTION_STRING } = require('./env');
 
 const app = express();
 
-dotenv.config({ path: path.resolve(process.cwd(), `.${process.env.NODE_ENV}.env`) });
+dotenv.config();
 
-const port = process.env.PORT || 5500;
 const logger = Logger('app');
 
-app.listen(port, () => {
-    logger.info(`Server running on PORT ${chalk.green(port)}`);
+app.listen(PORT, () => {
+    logger.info(`Server running on PORT ${chalk.green(PORT)}`);
 
     new Database()
         .connect()
@@ -49,7 +49,7 @@ app.listen(port, () => {
     app.use(cors());
 
     app.get('/', (req, res) => {
-        res.status(200).send(`Server running at PORT ${port}`);
+        res.status(200).send(`Server running at PORT ${PORT} at Database: ${DB_CONNECTION_STRING}`);
     });
 
     app.use('/products', protect, tilesRoute);
@@ -86,7 +86,7 @@ app.listen(port, () => {
             await mongoose.model(model).deleteMany({ _id: { $in: ids } });
 
             res.status(200).json();
-        }),
+        })
     );
 
     app.use('*', (req, res, next) => next(new AppError(`Cannot find ${req.originalUrl} on the server!`, 404)));
